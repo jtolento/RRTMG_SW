@@ -1,0 +1,5 @@
+  cp input_ice_saw_brd input_mosaic3_saw_spc
+  cp input_ice_saw_brd input_mosaic2_saw_spc
+  cp input_ice_saw_brd input_mosaic2_saw_brd
+  cp input_ice_saw_brd input_mosaic1_saw_brd
+  cp input_ice_saw_brd input_mosaic1_saw_spc

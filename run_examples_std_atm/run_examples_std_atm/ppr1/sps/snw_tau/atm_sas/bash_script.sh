@@ -1,0 +1,166 @@
+#!/bin/sh
+
+#cp input_rrtm_MLS-clr_alb_spc INPUT_RRTM
+#rrtmg_sw
+#cp OUTPUT_RRTM out_rrtm_MLS-clr_alb_spc
+#cp input_rrtm_MLS-clr_alb_brd INPUT_RRTM
+#rrtmg_sw
+#cp OUTPUT_RRTM out_rrtm_MLS-clr_alb_brd
+
+#cp input_rrtm_MLS-clr_spc INPUT_RRTM
+#rrtmg_sw
+#cp OUTPUT_RRTM out_mls_spc_clr
+#cp input_rrtm_MLS-clr_brd INPUT_RRTM
+#rrtmg_sw
+#cp OUTPUT_RRTM out_mls_brd_clr
+
+
+
+cp in_cld_mls0 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc0
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd0
+
+
+cp in_cld_mlspt1 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt1
+
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt1
+
+
+cp in_cld_mlspt2 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt2
+
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt2
+
+
+cp in_cld_mlspt3 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt3
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt3
+
+
+cp in_cld_mlspt4 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt4
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt4
+
+
+cp in_cld_mlspt5 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt5
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt5
+
+
+cp in_cld_mlspt7 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spcpt7
+
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brdpt7
+
+
+cp in_cld_mls1 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc1
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd1
+
+
+cp in_cld_mls1pt5 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc1pt5
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd1pt5
+
+cp in_cld_mls2 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc2
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd2
+
+
+cp in_cld_mls2pt5 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc2pt5
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd2pt5
+
+cp in_cld_mls3 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc3
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd3
+
+
+cp in_cld_mls4 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc4
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd4
+
+
+cp in_cld_mls6 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc6
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd6
+
+cp in_cld_mls8 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc8
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd8
+
+
+cp in_cld_mls10 IN_CLD_RRTM
+cp input_mls_spc INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_spc10
+cp input_mls_brd INPUT_RRTM
+rrtmg_sw
+cp OUTPUT_RRTM out_mls_brd10
+
+
+
+
+
+
