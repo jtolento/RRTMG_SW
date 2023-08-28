@@ -52,7 +52,7 @@
   13     703.9      237.7312       50.5298     1170.7810     1221.3108     983.579586       1.75769
   12     727.7      237.0974       51.8658     1164.0452     1215.9110     978.813530       1.69140
   11     751.5      236.4942       53.1794     1157.4888     1210.6682     974.173966       1.64720
-  10     775.3      235.9275       54.4660     1151.1183     1205.5843     969.656874       1.60304
+  10     775.2      235.9275       54.4660     1151.1183     1205.5843     969.656874       1.60304
    9     799.0      235.3919       55.7425     1144.8574     1200.5999     965.208072       1.57947
    8     822.8      234.8947       56.9936     1138.7985     1195.7921     960.897420       1.52978
    7     846.6      234.4393       58.2234     1132.9030     1191.1264     956.687101       1.49480
@@ -66,11 +66,11 @@
 
   Modules and versions used in this calculation:
 
-       rrtmg_sw.1col.f90:  $Revision: 33222 $            rrtmg_sw_init.f90:  $Revision: 33222 $
-     rrtmgsw_cldprop.f90:  $Revision: 33222 $          rrtmgsw_cldprmc.f90:  NOT USED          
-     rrtmg_sw_reftra.f90:  $Revision: 33222 $          rrtmg_sw_spcvrt.f90:  NOT USED          
+       rrtmg_sw.1col.f90:  $Revision$                    rrtmg_sw_init.f90:  $Revision$        
+     rrtmgsw_cldprop.f90:  $Revision$                  rrtmgsw_cldprmc.f90:  NOT USED          
+     rrtmg_sw_reftra.f90:  $Revision$                  rrtmg_sw_spcvrt.f90:  NOT USED          
      rrtmg_sw_spcvmc.f90:  NOT USED                    rrtmgsw_setcoef.f90:  NOT USED          
-     rrtmg_sw_taumol.f90:  $Revision: 33222 $          rrtmg_sw_vrtqdr.f90:  NOT USED          
+     rrtmg_sw_taumol.f90:  $Revision$                  rrtmg_sw_vrtqdr.f90:  NOT USED          
                 rrtatm.f:  NOT USED                             util_xxx.f:  NOT USED          
-                 extra.f:  NOT USED                       rrtmg_sw_k_g.f90:  $Revision: 33222 $
+                 extra.f:  NOT USED                       rrtmg_sw_k_g.f90:  $Revision$        
 

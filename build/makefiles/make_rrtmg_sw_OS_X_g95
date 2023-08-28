@@ -27,8 +27,10 @@ VERSION = v5.00
 ##############################################################
 
 ifeq ($(KGSRC),nc)
-   LIB_NETCDF = /usr/local/netcdf/3.6.3/ibmxl64/lib
-   INC_NETCDF = /usr/local/netcdf/3.6.3/ibmxl64/include
+   #LIB_NETCDF = /usr/local/netcdf/3.6.3/ibmxl64/lib
+   #INC_NETCDF = /usr/local/netcdf/3.6.3/ibmxl64/include
+   LIB_NETCDF = /opt/local/lib
+   INC_NETCDF = /opt/local/include
 endif
 
 ##################################
@@ -37,7 +39,7 @@ endif
 
 FC = g95
 ifeq ($(KGSRC),nc)
-   FCOPTS = -O3 -r8 -i8 -I$(INC_NETCDF)
+   FCOPTS = -O3 -g -r8 -i8 -I$(INC_NETCDF)
    LDFLAGS = -L$(LIB_NETCDF) -lnetcdf
 else
    FCOPTS = -O3 -r8 -i8

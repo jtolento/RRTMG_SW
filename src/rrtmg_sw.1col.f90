@@ -241,6 +241,7 @@
       real(kind=rb) :: solvar(jpband)         ! solar constant scaling factor from rrtmg_sw
                                               !  default value of 1368.22 Wm-2 at 1 AU
       real(kind=rb) :: semiss(jpband)         ! surface emissivity
+      real(kind=rb) :: semiss2(jpband)         ! surface emissivity  (for diffuse albedo) JPT
       real(kind=rb) :: albdir(nbndsw)         ! surface albedo, direct          ! zalbp
       real(kind=rb) :: albdif(nbndsw)         ! surface albedo, diffuse         ! zalbd
 
@@ -451,7 +452,20 @@
       real(kind=rb) :: svar_f_bnd(jpband)     ! Solar variability facular multiplier (by band)
       real(kind=rb) :: svar_s_bnd(jpband)     ! Solar variability sunspot multiplier (by band)
       real(kind=rb) :: svar_i_bnd(jpband)     ! Solar variability baseline irradiance multiplier (by band)
+      !real(kind=8), parameter :: dir(14) = [0.9854, 0.9776, 0.9123, 0.9765, 0.8898, &
+      !                                     0.8561, 0.5092, 0.1978, 0.0464, 0.015, &
+      !                                     0.0089, 0.0109, 0.0135, 0.989]
 
+      !real(kind=8), parameter :: dif(14) = [0.9918, 0.975,  0.9342, 0.9821, 0.919, &
+      !                                      0.8507, 0.5686, 0.2154, 0.0547, 0.0178,&
+      !                                      0.0106, 0.0131, 0.0161, 0.9926] 
+
+      real(kind=8), parameter :: dir(14) = [0.3475, 0.3475, 0.3475, 0.3475, 0.3475, &
+                                            0.3475, 0.3475, 0.3475, 0.1718, 0.0171,&
+                                            0.0171, 0.0171, 0.0171, 0.3475]
+      real(kind=8), parameter :: dif(14) = [0.27 ,  0.27,   0.27,   0.27,   0.27,  &
+                                            0.27,   0.27,   0.27,   0.1307, 0.0199, &
+                                            0.0199, 0.0199, 0.0199, 0.27]
 
 ! Initializations
 
@@ -553,7 +567,7 @@
 
 ! Input atmospheric profile from INPUT_RRTM. 
         call readprof(ird, nlayers, iout, imca, icld, iaer, isccos, idelm, pdp, &
-                       pavel, tavel, pz, tz, tbound, dz, semiss, zenith, adjflux, &
+                       pavel, tavel, pz, tz, tbound, dz, semiss, semiss2, zenith, adjflux, &
                        coldry, wkl, inflag, iceflag, liqflag, &
                        cldfrac, tauc, ssac, asmc, fsfc, ciwp, clwp, rei, rel, &
                        tauaer, ssaaer, asmaer, &
@@ -648,8 +662,10 @@
   
 ! Surface albedo
             do ib=1,nbndsw
-               albdif(ib) = 1._rb - semiss(jpb1-1+ib)
-               albdir(ib) = 1._rb - semiss(jpb1-1+ib)
+               albdif(ib) = 1._rb - semiss2(jpb1-1+ib) !JPT
+               albdir(ib) = 1._rb - semiss(jpb1-1+ib) !JPT
+               !albdir(ib) = 1._rb - dir(ib)
+               !albdif(ib) = 1._rb - dif(ib)
             enddo
 
 ! Clouds
@@ -1035,7 +1051,7 @@
       subroutine readprof(ird_in, nlayers_out, iout_out, imca, icld_out, &
            iaer_out, isccos_out, idelm_out, pdp, &
            pavel_out, tavel_out, pz_out, tz_out, tbound_out, dz_out, semiss_out, &
-           zenith_out, adjflux_out, &
+           semiss2_out, zenith_out, adjflux_out, &
            coldry_out, wkl_out, inflag_out, iceflag_out,liqflag_out, &
            cldfrac_out, tauc, ssac, asmc, fsfc, ciwp, clwp, rei, rel, &
            tauaer_out, ssaaer_out, asmaer_out, &
@@ -1082,7 +1098,7 @@
       common /consts/   pic,planckc,boltzc,clightc,avogadc,alosmtc,gasconc, &
                         radcn1c,radcn2c
       common /swprop/   zenith, albedo, adjflux(jpbands)
-      common /surface/  ireflect,semiss(jpbands)
+      common /surface/  ireflect, ireflect2, semiss(jpbands), semiss2(jpbands)
       common /profile/  nlayers,pavel(mxlay),tavel(mxlay),pz(0:mxlay),tz(0:mxlay),tbound
       common /species/  coldry(mxlay),wkl(mxmol,mxlay),wbrodl(mxlay),colmol(mxlay),nmol
       common /ifil/     ird,ipr,ipu,idum(15)
@@ -1124,6 +1140,7 @@
       real(kind=rb), intent(out) :: coldry_out(mxlay)        ! dry air molecular amount
       real(kind=rb), intent(out) :: wkl_out(mxmol,mxlay)     ! molecular amounts (mol/cm-2)
       real(kind=rb), intent(out) :: semiss_out(jpbands)       ! surface emissivity
+      real(kind=rb), intent(out) :: semiss2_out(jpbands)       ! surface emissivity (for diffuse albedo !jpt)
       real(kind=rb), intent(out) :: zenith_out               ! cos solar zenith angle
       real(kind=rb), intent(out) :: adjflux_out(jpbands)      ! adjustment for current Earth/Sun distance
       real(kind=rb), intent(out) :: decorr_con_out        ! decorrelation length, constant
@@ -1672,8 +1689,25 @@
       else
           print *, 'IEMIS = ', iemis, ' NOT A VALID INPUT VALUE'
           stop
-      endif
-     
+       endif
+
+       read (ird,9012) iemis2, ireflect2, semiss2(ib1:ib2) !JPT
+       if (iemis2 .eq. 0) then
+         do ib = ib1, ib2
+            semiss2(ib) = 1._rb
+         enddo
+      elseif (iemis2 .eq. 1) then
+         do ib = ib1, ib2
+            semiss2(ib) = semiss2(ib1)
+         enddo
+      elseif (iemis2 .eq. 2) then
+         !          print *, 'THESE ARE THE INPUT EMISSIVITY VALUES'
+         !          print *, semiss2(ib1:ib2)
+      else
+          print *, 'IEMIS2 = ', iemis2, ' NOT A VALID INPUT VALUE'
+          stop
+       endif
+       
 !  Read in extra records for EXP or ER cloud overlap
       if (icld .eq. 4 .or. icld .eq. 5) then
          read (ird,9014) idcor
@@ -1843,6 +1877,7 @@
       zenith_out = zenith
       do nb = ib1,ib2
         semiss_out(nb) = semiss(nb)
+        semiss2_out(nb) = semiss2(nb)
         adjflux_out(nb) = adjflux(nb)
       enddo
       decorr_con_out = decorr_con
@@ -1869,14 +1904,17 @@
 
  9009 format (a1,1x,i2,i2,i2)
  9010 format (a1)
- 9011 format (18x,i2,29x,i1,32x,i1,1x,i1,2x,i3,3x,i1,i1,3x,i1,i1)
- 9012 format (11x,i1,2x,i1,14f5.3)
+ 9011  format (18x,i2,29x,i1,32x,i1,1x,i1,2x,i3,3x,i1,i1,3x,i1,i1)
+      !jpt
+ !9012 format (11x,i1,2x,i1,14f5.3)
+ 9012 format (11x,i1,2x,i1,14f7.5)
  9013 format (1x,i1,i3,i5)                                     
  9014 format (8x,i2)
  9015 format (f10.3)
  9020 format (12x, i3, 3x, f7.4, 3x, i2, f10.4, f10.5, 14f10.5)
  9300 format (i5)
  9301 format (1x,i1)
+ 9016 format (11x,i1,2x,i1,14f7.5)
 
       end subroutine readprof
 
